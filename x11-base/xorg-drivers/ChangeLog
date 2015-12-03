@@ -1,0 +1,7 @@
+# ChangeLog for x11-base/xorg-drivers
+# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# $Header: $
+
+  03 Dec 2015; Chuso Pérez <overlay@chuso.net> xorg-drivers-1.16.ebuild,
+  xorg-drivers-1.17.ebuild:
+  Add vivante video card.
