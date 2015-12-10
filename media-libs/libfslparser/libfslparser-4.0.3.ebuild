@@ -45,5 +45,5 @@ src_configure() {
 
 src_install() {
 	einstall
-	doenvd "${FILESDIR}/99-libfslcodec"
+	doenvd "${FILESDIR}/99libfslparser"
 }
