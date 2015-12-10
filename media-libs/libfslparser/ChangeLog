@@ -1,0 +1,5 @@
+*libfslparser-4.0.3 (10 Dec 2015)
+
+  10 Dec 2015; Chuso Pérez +files/99-libfslparser, +libfslparser-4.0.3.ebuild,
+  +metadata.xml:
+  Added media-libs/libfslparser.

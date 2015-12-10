@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<use>
+	<flag name="avi">Enable support for AVI file format</flag>
+	<flag name="avidrm">Enable support for AVI file format with DRM</flag>
+	<flag name="flv">Enable support for FLV file format</flag>
+	<flag name="mkv">Enable support for Matroska file format</flag>
+	<flag name="mpeg2">Enable support for MPEG-2 file format</flag>
+</use>
+</pkgmetadata>
