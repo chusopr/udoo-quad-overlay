@@ -1,0 +1,48 @@
+diff -ur gst-fsl-plugins-4.0.3/tools/gplay/fsl_player_queue.c gst-fsl-plugins-4.0.3/tools/gplay/fsl_player_queue.c
+--- gst-fsl-plugins-4.0.3/tools/gplay/fsl_player_queue.c	2015-02-13 18:17:33.000000000 +0000
++++ gst-fsl-plugins-4.0.3/tools/gplay/fsl_player_queue.c	2015-10-24 20:50:52.447139600 +0000
+@@ -20,6 +20,8 @@
+  * Boston, MA 02111-1307, USA.
+  */
+ 
++#include <stdlib.h>
++
+ #include "fsl_player_debug.h"
+ 
+ #include "fsl_player_queue.h"
+diff -wur gst-fsl-plugins-4.0.3/tools/gplay/fsl_player_ui_message.c gst-fsl-plugins-4.0.3/tools/gplay/fsl_player_ui_message.c
+--- gst-fsl-plugins-4.0.3/tools/gplay/fsl_player_ui_message.c	2015-02-13 18:17:33.000000000 +0000
++++ gst-fsl-plugins-4.0.3/tools/gplay/fsl_player_ui_message.c	2015-10-24 20:50:58.527139601 +0000
+@@ -20,6 +20,8 @@
+  * Boston, MA 02111-1307, USA.
+  */
+ 
++#include <stdlib.h>
++
+ #include "fsl_player_ui_message.h"
+ 
+ fsl_player_ui_msg* fsl_player_ui_msg_new_empty(fsl_player_ui_msg_id msg_id)
+diff -wur gst-fsl-plugins-4.0.3/tools/gplay/Makefile.in gst-fsl-plugins-4.0.3/tools/gplay/Makefile.in
+--- gst-fsl-plugins-4.0.3/tools/gplay/Makefile.in	2015-10-24 20:48:47.947139585 +0000
++++ gst-fsl-plugins-4.0.3/tools/gplay/Makefile.in	2015-10-24 20:49:45.947139592 +0000
+@@ -162,7 +162,7 @@
+ LD = @LD@
+ LDFLAGS = @LDFLAGS@
+ LIBOBJS = @LIBOBJS@
+-LIBS = @LIBS@
++LIBS = @LIBS@ -lglib-2.0
+ LIBTOOL = @LIBTOOL@
+ LIPO = @LIPO@
+ LN_S = @LN_S@
+diff -wur gst-fsl-plugins-4.0.3/tools/gplay/playlist.c gst-fsl-plugins-4.0.3/tools/gplay/playlist.c
+--- gst-fsl-plugins-4.0.3/tools/gplay/playlist.c	2015-02-13 18:17:33.000000000 +0000
++++ gst-fsl-plugins-4.0.3/tools/gplay/playlist.c	2015-10-24 20:51:12.027139602 +0000
+@@ -38,6 +38,8 @@
+  * =====================================================================================
+  */
+ #include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
+ #include "playlist.h"
+ 
+ #define MEM_ALLOC(size) malloc((size))

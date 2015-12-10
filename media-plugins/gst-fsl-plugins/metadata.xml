@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<use>
+	<flag name="aacplus">Enable AAC+ (HE-AAC) audio decoding support</flag>
+	<flag name="ac3">Enable AC3 decoding support</flag>
+	<flag name="aiur">Enable Aiur format support</flag>
+	<flag name="amr">Enable Adaptive Multi-Rate Audio decoding support</flag>
+	<flag name="beep">Enable Beep audio decoding support</flag>
+	<flag name="h264">Enable MPEG-4 H264 video decoding support</flag>
+	<flag name="mpeg2">Enable MPEG-2 video decoding support</flag>
+	<flag name="mpeg4">Enable MPEG-4 ASP video decoding support</flag>
+	<flag name="wma">Enable Windows Media Audio decoding support</flag>
+	<flag name="wmv">Enable Windows Media Video support</flag>
+</use>
+</pkgmetadata>

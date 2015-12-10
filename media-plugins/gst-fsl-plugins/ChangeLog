@@ -1,0 +1,5 @@
+*gst-fsl-plugins-4.0.3 (10 Dec 2015)
+
+  10 Dec 2015; Chuso Pérez +files/fix_includes.patch,
+  +gst-fsl-plugins-4.0.3.ebuild, +metadata.xml:
+  Added media-plugins/gst-fsl-plugins.
