@@ -1,0 +1,4 @@
+*fsl-alsa-plugins-1.0.25 (10 Dec 2015)
+
+  10 Dec 2015; Chuso Pérez +fsl-alsa-plugins-1.0.25.ebuild, +metadata.xml:
+  Added media-plugins/fsl-alsa-plugins.
