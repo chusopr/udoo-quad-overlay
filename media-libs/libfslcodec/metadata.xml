@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<use>
+	<flag name="amrnb">Enable Adaptive Multi-Rate Audio encoding and decoding support (narrow band)</flag>
+	<flag name="amrwb">Enable Adaptive Multi-Rate Audio encoding and decoding support (wide band)</flag>
+	<flag name="bmp">Enable BMP image decoding support</flag>
+	<flag name="bsac">Enable MPEG-4 BSAC audio decoding support</flag>
+	<flag name="g711">Enable G711 decoding support</flag>
+	<flag name="g723">Enable G723 decoding support</flag>
+	<flag name="g726">Enable G726 decoding support</flag>
+	<flag name="g729">Enable G729 decoding support</flag>
+	<flag name="h264">Enable MPEG-4 H264 video decoding support</flag>
+	<flag name="mpeg2">Enable MPEG-2 video decoding support</flag>
+	<flag name="mpeg4">Enable MPEG-4 ASP video decoding support</flag>
+	<flag name="peq">Enable Peq support</flag>
+	<flag name="sbc">Enable SBC encoding support</flag>
+</use>
+</pkgmetadata>
