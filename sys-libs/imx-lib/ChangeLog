@@ -1,0 +1,4 @@
+*imx-lib-3.14.28 (10 Dec 2015)
+
+  10 Dec 2015; Chuso Pérez +imx-lib-3.14.28.ebuild, +metadata.xml:
+  Added sys-libs/imx-lib.
