@@ -1,0 +1,4 @@
+*linux-headers-3.14.28 (11 Dec 2015)
+
+  11 Dec 2015; Chuso Pérez +linux-headers-3.14.28.ebuild, +metadata.xml:
+  sys-kernel/linux-headers: Added.
