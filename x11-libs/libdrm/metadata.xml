@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>x11</herd>
+<use>
+<flag name='libkms'>Enable building of libkms, a library for applications to interface with KMS</flag>
+<flag name='valgrind'>Compile in valgrind memory hints</flag>
+<flag name='video_cards_etna_viv'>VIDEO_CARDS setting to build reverse-engineered driver for Vivante video card</flag>
+</use>
+</pkgmetadata>
