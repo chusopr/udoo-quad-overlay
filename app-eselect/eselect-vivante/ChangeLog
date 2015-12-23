@@ -1,0 +1,6 @@
+*eselect-vivante-1.0.0 (23 Dec 2015)
+
+  23 Dec 2015; Chuso Pérez +eselect-vivante-1.0.0.ebuild,
+  +files/vivante-1.0.0.eselect, +metadata.xml:
+  app-eselect/eselect-vivante: Added package for eselect module to choose
+  Vivante implementation.

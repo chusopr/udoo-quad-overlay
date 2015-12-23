@@ -1,0 +1,141 @@
+# -*-eselect-*-  vim: ft=eselect
+# Copyright 2005-2015 Gentoo Foundation
+# Distributed under the terms of the GNU GPL version 2 or later
+
+DESCRIPTION="Manage Vivante OpenGL implementation to use"
+VERSION="1.0"
+
+declare -A known_implementations
+known_implementations=(
+	["dfb"]="DirectFB"
+	["fb"]="Framebuffer"
+	["wl"]="Wayland"
+	["x11"]="X11"
+)
+
+find_targets() {
+	local i
+	for i in $(ls /usr/lib/opengl/vivante/lib/*-*.so | fgrep -v libwayland | sed -e 's/.*-//' | cut -d . -f 1 | sort | uniq)
+	do
+		echo "$i"
+	done
+}
+
+describe_list() {
+	echo "List available Vivante OpenGL implementations"
+}
+
+do_list() {
+	local i targets=( $(find_targets) )
+
+	write_list_start "Available Vivante OpenGL implementations"
+	for (( i = 0; i < ${#targets[@]}; i++ ))
+	do
+		[[ libVIVANTE-${targets[i]}.so = \
+			$(basename "$(canonicalise ${EROOT}/usr/lib/libVIVANTE.so)") ]] \
+			&& write_kv_list_entry $(highlight_marker "${targets[i]}" "${known_implementations[${targets[i]}]}") \
+			|| write_kv_list_entry ${targets[i]} ${known_implementations[${targets[i]}]}
+	done
+}
+
+describe_show() {
+	echo "Show currently-selected Vivante OpenGL implementation"
+}
+
+do_show() {
+	write_list_start "Current Vivante OpenGL implementation:"
+	if [[ -L ${EROOT}/usr/lib/libVIVANTE.so ]]
+	then
+		local selected=$(basename "$(canonicalise ${EROOT}/usr/lib/libVIVANTE.so)" | sed -e 's/.*-//' -e 's/\..*//')
+		write_kv_list_entry "$selected" ${known_implementations[$selected]}
+	else
+		write_kv_list_entry "(unset)" ""
+	fi
+}
+
+describe_set() {
+	echo "Select Vivante OpenGL implementation to use"
+}
+
+describe_set_parameters() {
+	echo "<implementation>"
+}
+
+describe_set_options() {
+	echo "implementation : Implementation name from the ones listed by 'list' action"
+}
+
+do_set() {
+	[[ -z $1 ]] && die -q "You must provide Vivante implementation to use"
+	[[ $# -gt 1 ]] && die -q "Too many parameters"
+
+	local lib
+	for lib in EGL GAL GAL_egl GLESv2 VIVANTE
+	do
+		local libprefix
+		if [[ $lib = "EGL" ]] || [[ $lib = "GLESv2" ]]
+		then
+			libprefix="${EROOT}/usr/lib/opengl/vivante/lib"
+		else
+			libprefix="${EROOT}/usr/lib"
+		fi
+
+		if [[ -a $libprefix/lib${lib}.so ]] &&
+		   [[ ! -L $libprefix/lib${lib}.so ]]
+		then
+			die -q "$libprefix/lib${lib}.so exists but is not a symlink"
+		fi
+
+		local libpath
+		if [[ "$lib" = "GAL_egl" ]]
+		then
+			libpath=$libprefix/lib${lib}.
+		else
+			libpath=$libprefix/lib${lib}-
+		fi
+
+		[[ ! -e "${libpath}$1.so" ]] && die -q "$1 implementation not found for lib${lib}.so"
+	done
+
+	for pc in egl glesv1_cm glesv2 vg
+	do
+		if [[ -a ${EROOT}/usr/lib/pkgconfig/${pc}.pc ]] &&
+		   [[ ! -L ${EROOT}/usr/lib/pkgconfig/${pc}.pc ]]
+		then
+			die -q "${EROOT}/usr/lib/pkgconfig/${pc}.pc exists but is not a symlink"
+		fi
+
+		[[ ! -e ${EROOT}/usr/lib/pkgconfig/${pc}_$1.pc ]] && die -q "$1 implementation not found for ${pc}.pc"
+	done
+
+	echo -n "Switching to $1 Vivante implementation..."
+	for lib in EGL GAL GAL_egl GLESv2 VIVANTE
+	do
+		local libbase libprefix
+		if [[ $lib = "EGL" ]] || [[ $lib = "GLESv2" ]]
+		then
+			libbase=${EROOT}/usr/lib/opengl/vivante/lib/lib${lib}-
+			libprefix=${EROOT}/usr/lib/opengl/vivante/lib
+		elif [[ $lib = "GAL_egl" ]]
+		then
+			libbase=${EROOT}/usr/lib/lib${lib}.
+			libprefix=${EROOT}/usr/lib
+		else
+			libbase=${EROOT}/usr/lib/lib${lib}-
+			libprefix=${EROOT}/usr/lib
+		fi
+		
+		ln -sf ${libbase}$1.so $libprefix/lib${lib}.so \
+		|| die -q "Unable to set lib${lib}.so implementation to ${1}. Now your Vivante configuration may be broken."
+	done
+
+	for pc in egl glesv1_cm glesv2 vg
+	do
+		ln -sf ${pc}_$1.pc ${EROOT}/usr/lib/pkgconfig/${pc}.pc \
+		|| die -q "Unable to set ${pc}.pc implementation to ${1}. Now your Vivante configuration may be broken."
+	done
+
+	echo " done"
+	echo "If you are using Vivante OpenGL implementation, you will need to set it again:"
+	echo "  eselect opengl set vivante"
+}
