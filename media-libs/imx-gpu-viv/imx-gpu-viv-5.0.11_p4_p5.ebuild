@@ -4,11 +4,19 @@
 
 EAPI="5"
 
-inherit eutils
+inherit eutils toolchain-funcs
 
-MY_PV="5.0.11.p4.5-hfp"
+if [ "$(tc-is-softfloat)" == "no" ]
+then
+	fp=hfp
+else
+	fp=sfp
+fi
+
+MY_PV="5.0.11.p4.5-$fp"
 DESCRIPTION="Binary vivante gpu files"
 HOMEPAGE="https://freescale.github.io"
+
 SRC_URI="http://www.freescale.com/lgfiles/NMG/MAD/YOCTO/${PN}-${MY_PV}.bin"
 
 LICENSE="Freescale-3rd_party"
