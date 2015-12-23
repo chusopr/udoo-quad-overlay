@@ -1,0 +1,5 @@
+*imx-gpu-viv-5.0.11_p4_p5 (23 Dec 2015)
+
+  23 Dec 2015; Chuso Pérez +imx-gpu-viv-5.0.11_p4_p5.ebuild, +metadata.xml:
+  media-libs/imx-gpu-viv: Added Vivante OpenGL implementation and system
+  libraries.
