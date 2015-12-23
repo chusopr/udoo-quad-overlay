@@ -97,8 +97,8 @@ src_install(){
 pkg_postinst(){
 	einfo "Please ignore previous errors about missing soname symlinks"
 	eselect opengl set vivante
-	eselect --brief vivante show | fgrep -q unset || {
-		ewarn "Please choose your Vivante implementation as soon as possible."
+	eselect --brief vivante show | fgrep -q unset && {
+		ewarn "Please choose your Vivante implementation using 'eselect vivante' as soon as possible."
 		ewarn "Packages depending on this one may not build correctly until you do that."
 	}
 }
