@@ -1,0 +1,4 @@
+*libetnaviv-9999 (29 Dec 2015)
+
+  29 Dec 2015; Chuso Pérez +libetnaviv-9999.ebuild, +metadata.xml:
+  media-libs/libetnaviv: New package.
