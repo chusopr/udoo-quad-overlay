@@ -1,0 +1,4 @@
+*udoo-sources-3.14.28 (29 Dec 2015)
+
+  29 Dec 2015; Chuso Pérez +metadata.xml, +udoo-sources-3.14.28.ebuild:
+  sys-kernel/udoo-sources: Added kernel sources customized for Udoo.
