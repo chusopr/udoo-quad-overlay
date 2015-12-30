@@ -1,0 +1,7 @@
+*mesa-10.2.9 (30 Dec 2015)
+
+  30 Dec 2015; Chuso Pérez +files/eselect-mesa.conf.9.2,
+  +files/glx_ro_text_segm.patch,
+  +files/mesa-10.2-dont-require-llvm-for-r300.patch, +mesa-10.2.9.ebuild,
+  +metadata.xml:
+  media-libs/mesa: Added support for etna_viv driver.
