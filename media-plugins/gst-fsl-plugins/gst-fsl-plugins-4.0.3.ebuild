@@ -13,7 +13,7 @@ SRC_URI="http://www.freescale.com/lgfiles/NMG/MAD/YOCTO/${P}.tar.gz
 		http://git.yoctoproject.org/cgit/cgit.cgi/meta-fsl-arm/plain/recipes-multimedia/gstreamer/gst-fsl-plugin/configure.ac-Fix-query-of-CFLAGS-to-pkgconfig.patch?id=a3a6ca336023d41400e130f0d21fa35e0f67a6ea -> configure.ac-Fix-query-of-CFLAGS-to-pkgconfig.patch"
 
 LICENSE="GPL-2 LGPL-2 LGPL-2.1"
-SLOT="0"
+SLOT="0.10"
 KEYWORDS="~arm"
 IUSE="+aac +aacplus +ac3 +aiur +amr +beep +encode +h264 +mp3 +mpeg2 +mpeg4 +v4l +vorbis +wma +wmv +X"
 
