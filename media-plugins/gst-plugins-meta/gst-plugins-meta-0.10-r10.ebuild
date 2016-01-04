@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ HOMEPAGE="https://www.gentoo.org"
 LICENSE="metapackage"
 SLOT="0.10"
 KEYWORDS="~arm"
-IUSE="aac a52 alsa cdda dts dv dvb dvd ffmpeg flac http freescale jack lame libass libvisual mms mp3 modplug mpeg musepack ogg opus oss pulseaudio taglib theora v4l vcd vorbis vpx wavpack X x264 xv xvid"
+IUSE="aac a52 alsa cdda dts dv dvb dvd ffmpeg flac http imx6 jack lame libass libvisual mms mp3 modplug mpeg musepack ogg opus oss pulseaudio taglib theora v4l vcd vorbis vpx wavpack X x264 xv xvid"
 REQUIRED_USE="opus? ( ogg ) theora? ( ogg ) vorbis? ( ogg )"
 
 RDEPEND=">=media-libs/gstreamer-0.10.36-r2:0.10[${MULTILIB_USEDEP}]
@@ -60,7 +60,7 @@ RDEPEND=">=media-libs/gstreamer-0.10.36-r2:0.10[${MULTILIB_USEDEP}]
 		>=media-plugins/gst-plugins-mplex-0.10.23:0.10[${MULTILIB_USEDEP}]
 		>=media-plugins/gst-plugins-mpeg2dec-0.10.19:0.10[${MULTILIB_USEDEP}] )
 	arm? (
-		freescale? ( media-plugins/gst-fsl-plugins:0.10 )
+		imx6? ( media-plugins/gst-fsl-plugins:0.10 )
 	)
 	vorbis? ( >=media-plugins/gst-plugins-vorbis-0.10.36:0.10[${MULTILIB_USEDEP}] )
 	vpx? ( >=media-plugins/gst-plugins-vp8-0.10.23-r1:0.10[${MULTILIB_USEDEP}] )
