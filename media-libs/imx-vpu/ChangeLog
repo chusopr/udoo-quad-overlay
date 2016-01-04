@@ -1,0 +1,4 @@
+*imx-vpu-5.4.28 (04 Jan 2016)
+
+  04 Jan 2016; Chuso Pérez +imx-vpu-5.4.28.ebuild, +metadata.xml:
+  media-libs/imx-vpu: New package.
