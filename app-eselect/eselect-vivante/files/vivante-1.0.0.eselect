@@ -43,13 +43,11 @@ describe_show() {
 }
 
 do_show() {
-	write_list_start "Current Vivante OpenGL implementation:"
 	if [[ -L ${EROOT}/usr/lib/libVIVANTE.so ]]
 	then
-		local selected=$(basename "$(canonicalise ${EROOT}/usr/lib/libVIVANTE.so)" | sed -e 's/.*-//' -e 's/\..*//')
-		write_kv_list_entry "$selected" ${known_implementations[$selected]}
+		basename "$(canonicalise ${EROOT}/usr/lib/libVIVANTE.so)" | sed -e 's/.*-//' -e 's/\..*//'
 	else
-		write_kv_list_entry "(unset)" ""
+		echo "(unset)"
 	fi
 }
 
