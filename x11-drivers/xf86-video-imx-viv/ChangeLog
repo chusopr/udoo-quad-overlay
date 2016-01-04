@@ -1,0 +1,5 @@
+*xf86-video-imx-viv-5.0.11_p4_p5 (04 Jan 2016)
+
+  04 Jan 2016; Chuso Pérez +metadata.xml,
+  +xf86-video-imx-viv-5.0.11_p4_p5.ebuild:
+  x11-drivers/xf86-video-imx-viv: New package.
