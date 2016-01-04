@@ -1,0 +1,5 @@
+*libcec-3.0.1 (04 Jan 2016)
+
+  04 Jan 2016; Chuso Pérez +files/libcec-3.0.1-envcheck.patch,
+  +libcec-3.0.1.ebuild, +metadata.xml:
+  dev-libs/libcec: Added package with i.MX6 support.
