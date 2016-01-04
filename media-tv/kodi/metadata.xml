@@ -9,6 +9,7 @@
  <flag name='fishbmc'>Enable fishBMC visualization plugin</flag>
  <flag name='gles'>Enable support for GLES</flag>
  <flag name='goom'>Enable GOOM visualization plugin</flag>
+ <flag name="imx6">Enable support for i.MX6 chipsets</flag>
  <flag name='midi'>Support MIDI files</flag>
  <flag name='nfs'>Enable NFS client support</flag>
  <flag name='projectm'>Enable projectM visualization plugin</flag>
@@ -17,7 +18,6 @@
  <flag name='sftp'>Support browsing files over SFTP</flag>
  <flag name='spectrum'>Enable spectrum visualization plugin</flag>
  <flag name='texturepacker'>Support packing skin textures</flag>
- <flag name="video_cards_vivante">VIDEO_CARDS setting to build driver for Vivante video cards</flag>
  <flag name='waveform'>Enable waveform visualization plugin</flag>
  <flag name='webserver'>Enable internal webserver</flag>
 </use>

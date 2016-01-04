@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -34,7 +34,7 @@ HOMEPAGE="http://kodi.tv/ http://kodi.wiki/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="airplay alsa avahi bluetooth bluray caps cec css dbus debug +fishbmc gles goom java joystick midi mysql nfs +opengl profile +projectm pulseaudio +rsxs rtmp +samba sftp +spectrum test +texturepacker udisks upnp upower +usb vaapi vdpau video_cards_vivante +waveform webserver +X"
+IUSE="airplay alsa avahi bluetooth bluray caps cec css dbus debug +fishbmc gles goom imx6 java joystick midi mysql nfs +opengl profile +projectm pulseaudio +rsxs rtmp +samba sftp +spectrum test +texturepacker udisks upnp upower +usb vaapi vdpau +waveform webserver +X"
 REQUIRED_USE="
 	rsxs? ( X )
 	udisks? ( dbus )
@@ -104,8 +104,8 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		>=media-libs/glew-1.5.6
 	)
 	gles? (
-		video_cards_vivante? ( media-libs/imx-gpu-viv )
-		!video_cards_vivante? ( media-libs/mesa[gles2] )
+		imx6? ( media-libs/imx-gpu-viv )
+		!imx6? ( media-libs/mesa[gles2] )
 	)
 	vaapi? ( x11-libs/libva[opengl] )
 	vdpau? (
@@ -142,6 +142,16 @@ ERROR_IP_MULTICAST="
 In some cases Kodi needs to access multicast addresses.
 Please consider enabling IP_MULTICAST under Networking options.
 "
+
+pkg_pretend() {
+	if use gles && use imx6 && ( [[ "$(eselect opengl show)" != "vivante" ]] || [[ "$(eselect vivante show)" == "x11" ]] )
+	then
+		eerror "You have enabled GLES support via i.MX6 implementation but have not satisfied all the following requirements:"
+		eerror "  1. Select Framebuffer implementation por Vivante libraries: 'eselect vivante set fb'"
+		eerror "  2. Select Vivante implementation for OpenGL: 'eselect opengl set vivante'"
+		die
+	fi
+}
 
 pkg_setup() {
 	check_extra_config
@@ -211,7 +221,7 @@ src_configure() {
 		--disable-ccache \
 		--disable-optimizations \
 		--with-ffmpeg=shared \
-		$(use_enable video_cards_vivante codec=imxvpu) \
+		$(use_enable imx6 codec=imxvpu) \
 		$(use_enable alsa) \
 		$(use_enable airplay) \
 		$(use_enable avahi) \
