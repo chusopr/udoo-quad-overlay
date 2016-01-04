@@ -1,0 +1,4 @@
+*libfslvpuwrap-1.0.58 (04 Jan 2016)
+
+  04 Jan 2016; Chuso Pérez +libfslvpuwrap-1.0.58.ebuild, +metadata.xml:
+  media-libs/libfslvpuwrap: New package
