@@ -75,8 +75,7 @@ src_compile(){
 	mv glesv2.pc glesv2_wl.pc &&
 	cp vg.pc vg_dfb.pc &&
 	cp vg.pc vg_fb.pc &&
-	mv vg.pc vg_wl.pc &&
-	sed -i "s/(LINUX)/(linux)/g" ../../include/EGL/* ../../include/HAL/* || die
+	mv vg.pc vg_wl.pc || die
 }
 
 src_install(){
