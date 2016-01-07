@@ -1,0 +1,8 @@
+*DirectFB-1.7.4 (07 Jan 2016)
+
+  07 Jan 2016; Chuso Pérez +DirectFB-1.7.4.ebuild, +files/DirectFB-1.7.4-atomic-
+  fix-compiler-error-when-building-for-thumb2.patch,
+  +files/DirectFB-1.7.4-build.patch, +files/DirectFB-1.7.4-flags.patch,
+  +files/DirectFB-1.7.4-pkgconfig.patch, +files/DirectFB-1.7.4-setregion.patch,
+  +metadata.xml:
+  dev-libs/DirectFB: New package.
