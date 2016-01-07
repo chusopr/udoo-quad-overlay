@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -25,17 +25,22 @@ SLOT="0"
 
 KEYWORDS="~arm"
 
+IUSE="X directfb wayland"
+
 DEPEND="app-eselect/eselect-opengl
 	app-eselect/eselect-vivante
+	sys-devel/gcc
 	sys-kernel/firmware-imx
 	x11-libs/libX11
 	x11-libs/libXdamage
 	x11-libs/libXfixes
 	x11-libs/libXext
-	x11-libs/libxcb
-	x11-libs/libXau
-	x11-libs/libXdmcp
-	x11-libs/libdrm"
+	X? ( x11-libs/libdrm )
+	directfb? ( =dev-libs/DirectFB-1.7.4 )
+	wayland? (
+		dev-libs/libffi
+		dev-libs/wayland
+	)"
 
 S="${WORKDIR}/${PN}-${MY_PV}"
 OPENGLDIR=usr/lib/opengl/vivante
@@ -45,11 +50,31 @@ src_unpack() {
 }
 
 src_compile(){
-	cd gpu-core/usr/lib &&
+	cd gpu-core/usr/lib || die
+	if use directfb; then
+		mv pkgconfig/egl_directfb.pc pkgconfig/egl_dfb.pc &&
+		cp pkgconfig/glesv1_cm.pc pkgconfig/glesv1_cm_dfb.pc &&
+		cp pkgconfig/glesv2.pc pkgconfig/glesv2_dfb.pc &&
+		cp pkgconfig/vg.pc pkgconfig/vg_dfb.pc || die
+	else
+		rm -r ../../etc/directfbrc *directfb* pkgconfig/egl_directfb.pc *dfb*
+	fi
+	if use wayland; then
+		mv pkgconfig/egl_wayland.pc pkgconfig/egl_wl.pc &&
+		cp pkgconfig/glesv1_cm.pc pkgconfig/glesv1_cm_wl.pc &&
+		cp pkgconfig/glesv2.pc pkgconfig/glesv2_wl.pc &&
+		cp pkgconfig/vg.pc pkgconfig/vg_wl.pc || die
+	else
+		rm -r *wayland* *wl* pkgconfig/*wayland* ../include/wayland-viv
+	fi
+	if use X; then
+		# x11 implementation of GAL_egl is called "dri" implementation
+		mv libGAL_egl.dri.so libGAL_egl.x11.so || die
+	else
+		rm -r libGAL_egl.dri.so *x11* dri pkgconfig/*x11*
+	fi
 	# Duplicated
 	rm libVIVANTE.fb.so &&
-	# x11 implementation of GAL_egl is called "dri" implementation
-	mv libGAL_egl.dri.so libGAL_egl.x11.so &&
 	# Remove already linked libraries to let app-eselect/eselect-vivante do the choice
 	rm -f libEGL.so &&
 	ln -sf libEGL.so libEGL.so.1.0 &&
@@ -63,27 +88,26 @@ src_compile(){
 	ln -sf libGL.so.1.2 libGL.so &&
 	ln -sf libOpenVG.3d.so libOpenVG.so &&
 	cd pkgconfig &&
-	mv egl_directfb.pc egl_dfb.pc &&
 	mv egl_linuxfb.pc egl_fb.pc &&
-	mv egl_wayland.pc egl_wl.pc &&
 	rm egl.pc &&
-	cp glesv1_cm.pc glesv1_cm_dfb.pc &&
-	cp glesv1_cm.pc glesv1_cm_fb.pc &&
-	mv glesv1_cm.pc glesv1_cm_wl.pc &&
-	cp glesv2.pc glesv2_dfb.pc &&
-	cp glesv2.pc glesv2_fb.pc &&
-	mv glesv2.pc glesv2_wl.pc &&
-	cp vg.pc vg_dfb.pc &&
-	cp vg.pc vg_fb.pc &&
-	mv vg.pc vg_wl.pc || die
+	mv glesv1_cm.pc glesv1_cm_fb.pc &&
+	mv glesv2.pc glesv2_fb.pc &&
+	mv vg.pc vg_fb.pc || die
 }
 
 src_install(){
 	dodir ${OPENGLDIR}/lib ${OPENGLDIR}/include /usr/include /etc
-	mv gpu-core/usr/lib/dri "$D/usr/lib" &&
+	if use directfb; then
+		mv gpu-core/usr/lib/directfb* "$D/usr/lib" || die
+	fi
+	if use wayland; then
+		mv gpu-core/usr/lib/lib*wayland* "$D/usr/lib" || die
+	fi
+	if use X; then
+		mv gpu-core/usr/lib/dri "$D/usr/lib" || die
+	fi
 	mv gpu-core/usr/lib/pkgconfig "$D/usr/lib" &&
-	mv gpu-core/usr/lib/directfb* "$D/usr/lib" &&
-	mv gpu-core/usr/lib/lib{CLC,GAL,OpenCL,VDK,VivanteOpenCL,VIVANTE,VSC,*wayland}* "$D/usr/lib" &&
+	mv gpu-core/usr/lib/lib{CLC,GAL,OpenCL,VDK,VivanteOpenCL,VIVANTE,VSC}* "$D/usr/lib" &&
 	mv gpu-core/usr/lib/* "$D/${OPENGLDIR}/lib" &&
 	mv gpu-core/usr/include/{CL,HAL,gc_*,vdk.h} "$D/usr/include" &&
 	mv gpu-core/usr/include/* "$D/${OPENGLDIR}/include" &&
@@ -95,9 +119,13 @@ src_install(){
 
 pkg_postinst(){
 	einfo "Please ignore previous errors about missing soname symlinks"
-	eselect opengl set vivante
-	eselect --brief vivante show | fgrep -q unset && {
-		ewarn "Please choose your Vivante implementation using 'eselect vivante' as soon as possible."
-		ewarn "Packages depending on this one may not build correctly until you do that."
-	}
+	if ! use directfb && ! use wayland && ! use X; then
+		eselect vivante set fb
+		eselect opengl set vivante
+	else
+		eselect --brief vivante show | fgrep -q unset && {
+			ewarn "Please choose your Vivante implementation using 'eselect vivante' as soon as possible."
+			ewarn "Packages depending on this one may not build correctly until you do that."
+		}
+	fi
 }
