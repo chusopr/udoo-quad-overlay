@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ SRC_URI="http://www.freescale.com/lgfiles/NMG/MAD/YOCTO/${P}-1.0.0.bin
 		https://community.freescale.com/servlet/JiveServlet/download/335225-262426/v4l-codadx6-imx27.bin.zip
 		https://s.chuso.net/chuso-overlay/distfiles/fslbsp2coda.c"
 
-LICENSE="Freescale-3rd_party"
+LICENSE="Freescale"
 SLOT="0"
 KEYWORDS="~arm"
 

@@ -19,7 +19,7 @@ HOMEPAGE="https://freescale.github.io"
 
 SRC_URI="http://www.freescale.com/lgfiles/NMG/MAD/YOCTO/${PN}-${MY_PV}.bin"
 
-LICENSE="Freescale-3rd_party"
+LICENSE="Freescale"
 
 SLOT="0"
 

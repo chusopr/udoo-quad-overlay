@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -12,7 +12,7 @@ SRC_URI="http://repository.timesys.com/buildsources/l/${PN}/${P}/${P}.bin
 		http://repository.timesys.com/buildsources/l/${PN}/${P}/${P}-fix-library-path.patch"
 
 # need to get user to accept the license ? .. where does the license go?
-LICENSE="Freescale-3rd_party"
+LICENSE="Freescale"
 SLOT="0"
 
 KEYWORDS="~arm"

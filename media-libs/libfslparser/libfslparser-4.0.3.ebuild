@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ DESCRIPTION="Freescale Multimedia parser libs"
 HOMEPAGE="https://freescale.github.io"
 SRC_URI="http://www.freescale.com/lgfiles/NMG/MAD/YOCTO/${P}.bin"
 
-LICENSE="Freescale-3rd_party"
+LICENSE="Freescale"
 SLOT="0"
 KEYWORDS="~arm"
 IUSE="+avi +avidrm +flv +mkv +mp3 +mp4 +mpeg2 +ogg"

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -10,7 +10,7 @@ DESCRIPTION="Freescale Multimedia codec libs"
 HOMEPAGE="https://freescale.github.io"
 
 SRC_URI="http://www.freescale.com/lgfiles/NMG/MAD/YOCTO/${P}.bin"
-LICENSE="Freescale-3rd_party"
+LICENSE="Freescale"
 SLOT="0"
 KEYWORDS="~arm"
 IUSE="+aac +amrnb +amrwb +bmp +bsac doc +encode examples +flac +gif +g711 +g723 +g726 +g729 +h264 +jpeg +mp3 +mpeg2 +mpeg4 +peq +png +sbc +vorbis"
