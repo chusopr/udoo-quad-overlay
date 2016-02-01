@@ -1,3 +1,9 @@
+*imx-lib-5.1 (01 Feb 2016)
+
+  01 Feb 2016; Jesús Pérez (Chuso) +files/10-imx.rules, +imx-lib-5.1.ebuild,
+  -imx-lib-3.14.28.ebuild:
+  sys-libs/imx-lib: Switched to version 5.1.
+
 *imx-lib-3.14.28 (10 Dec 2015)
 
   10 Dec 2015; Chuso Pérez +imx-lib-3.14.28.ebuild, +metadata.xml:
