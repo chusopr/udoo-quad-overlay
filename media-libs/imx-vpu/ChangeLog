@@ -1,3 +1,9 @@
+*imx-vpu-5.4.31 (01 Feb 2016)
+
+  01 Feb 2016; Jesús Pérez (Chuso) +imx-vpu-5.4.31.ebuild,
+  -imx-vpu-5.4.28.ebuild:
+  media-libs/imx-vpu: Switched to version 5.4.31.
+
 *imx-vpu-5.4.28 (04 Jan 2016)
 
   04 Jan 2016; Chuso Pérez +imx-vpu-5.4.28.ebuild, +metadata.xml:

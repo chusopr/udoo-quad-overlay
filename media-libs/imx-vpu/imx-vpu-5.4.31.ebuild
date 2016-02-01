@@ -19,7 +19,8 @@ KEYWORDS="~arm"
 
 RESTRICT="strip mirror"
 
-DEPEND="sys-kernel/firmware-imx media-libs/imx-gpu-viv"
+DEPEND="sys-kernel/firmware-imx
+	media-libs/imx-gpu-viv"
 RDEPEND="${DEPEND}"
 
 src_unpack() {
