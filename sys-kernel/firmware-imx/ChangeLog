@@ -1,3 +1,9 @@
+*firmware-imx-5.2 (01 Feb 2016)
+
+  01 Feb 2016; Jesús Pérez (Chuso) +files/fslbsp2coda.c,
+  +firmware-imx-5.2.ebuild, -firmware-imx-3.14.28.ebuild:
+  sys-kernel/firmware-imx: Switched to version 5.2.
+
 *firmware-imx-3.14.28 (09 Dec 2015)
 
   09 Dec 2015; Chuso Pérez +firmware-imx-3.14.28.ebuild, +metadata.xml:
