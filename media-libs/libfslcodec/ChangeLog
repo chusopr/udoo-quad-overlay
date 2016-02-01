@@ -1,3 +1,9 @@
+*libfslcodec-4.0.7 (01 Feb 2016)
+
+  01 Feb 2016; Jesús Pérez (Chuso) +libfslcodec-4.0.7.ebuild,
+  -libfslcodec-4.0.3.ebuild:
+  media-libs/libfslcodec: Switched to version 4.0.7.
+
 *libfslcodec-4.0.3 (10 Dec 2015)
 
   10 Dec 2015; Chuso Pérez +files/99-libfslcodec, +libfslcodec-4.0.3.ebuild,
