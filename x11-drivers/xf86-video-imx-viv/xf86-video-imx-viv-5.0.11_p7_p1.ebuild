@@ -9,8 +9,7 @@ inherit eutils toolchain-funcs
 MY_PV="5.0.11.p4.5"
 DESCRIPTION="Vivante xorg driver"
 HOMEPAGE="https://freescale.github.io"
-SRC_URI="http://www.freescale.com/lgfiles/NMG/MAD/YOCTO/xserver-xorg-video-imx-viv-${MY_PV}.tar.gz
-		https://git.yoctoproject.org/cgit/cgit.cgi/meta-fsl-arm/plain/recipes-graphics/xorg-xserver/xserver-xf86-config/mx6/xorg.conf?id=5efa2d7c81a4c1f3590a3e2f8cf77bf2f2d756e9 -> xorg.conf.vivante"
+SRC_URI="http://www.freescale.com/lgfiles/NMG/MAD/YOCTO/xserver-xorg-video-imx-viv-${MY_PV}.tar.gz"
 
 LICENSE="GPL-2+ MIT"
 
@@ -24,6 +23,11 @@ DEPEND="media-libs/imx-gpu-viv
 
 S=${WORKDIR}/xserver-xorg-video-imx-viv-${MY_PV}
 
+src_prepare() {
+	epatch "${FILESDIR}/Remove-dix-internal-header-usage.patch"
+	epatch "${FILESDIR}/Stop-using-Git-to-write-local-version.patch"
+}
+
 src_compile() {
 	hardfp=0
 	if [ "$(tc-is-softfloat)" == "no" ]
@@ -36,7 +40,7 @@ src_compile() {
 src_install() {
 	einstall prefix="${D}/usr"
 	insinto /etc/X11/xorg.conf.d
-	newins "${DISTDIR}"/xorg.conf.vivante 10-vivante.conf
+	newins "${FILESDIR}/xorg.conf" 10-vivante.conf
 	dodir /etc/local.d
 	echo "DISPLAY=:0 autohdmi &" > ${D}/etc/local.d/autohdmi.start &&
 	chmod 755 "${D}"/etc/local.d/autohdmi.start || die
