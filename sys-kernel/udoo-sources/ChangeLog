@@ -1,3 +1,9 @@
+*udoo-sources-3.14.56 (01 Feb 2016)
+
+  01 Feb 2016; Jesús Pérez (Chuso) +udoo-sources-3.14.56.ebuild,
+  -udoo-sources-3.14.28.ebuild:
+  sys-kernel/udoo-sources: Moved to version 3.14.56.
+
 *udoo-sources-3.14.28 (29 Dec 2015)
 
   29 Dec 2015; Chuso Pérez +metadata.xml, +udoo-sources-3.14.28.ebuild:
