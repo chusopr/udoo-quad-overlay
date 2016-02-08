@@ -74,19 +74,19 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	media-libs/libmodplug
 	media-libs/libmpeg2
 	media-libs/libogg
-	media-libs/libpng
+	media-libs/libpng:0=
 	projectm? ( media-libs/libprojectm )
 	media-libs/libsamplerate
 	joystick? ( media-libs/libsdl2 )
 	>=media-libs/taglib-1.8
 	media-libs/libvorbis
-	media-libs/tiff
+	media-libs/tiff:0=
 	pulseaudio? ( media-sound/pulseaudio )
 	media-sound/wavpack
 	>=media-video/ffmpeg-2.6:=[encode]
 	rtmp? ( media-video/rtmpdump )
 	avahi? ( net-dns/avahi )
-	nfs? ( net-fs/libnfs )
+	nfs? ( net-fs/libnfs:= )
 	webserver? ( net-libs/libmicrohttpd[messages] )
 	sftp? ( net-libs/libssh[sftp] )
 	net-misc/curl
@@ -95,8 +95,8 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dbus? ( sys-apps/dbus )
 	caps? ( sys-libs/libcap )
 	sys-libs/zlib
-	virtual/jpeg
-	usb? ( virtual/libusb )
+	virtual/jpeg:0=
+	usb? ( virtual/libusb:1 )
 	mysql? ( virtual/mysql )
 	opengl? (
 		virtual/glu
@@ -143,15 +143,15 @@ In some cases Kodi needs to access multicast addresses.
 Please consider enabling IP_MULTICAST under Networking options.
 "
 
-pkg_pretend() {
-	if use gles && use imx6 && ( [[ "$(eselect opengl show)" != "vivante" ]] || [[ "$(eselect vivante show)" == "x11" ]] )
-	then
-		eerror "You have enabled GLES support via i.MX6 implementation but have not satisfied all the following requirements:"
-		eerror "  1. Select Framebuffer implementation por Vivante libraries: 'eselect vivante set fb'"
-		eerror "  2. Select Vivante implementation for OpenGL: 'eselect opengl set vivante'"
-		die
-	fi
-}
+#pkg_pretend() {
+#	if use gles && use imx6 && ( [[ "$(eselect opengl show)" != "vivante" ]] || [[ "$(eselect vivante show)" == "x11" ]] )
+#	then
+#		eerror "You have enabled GLES support via i.MX6 implementation but have not satisfied all the following requirements:"
+#		eerror "  1. Select Framebuffer implementation por Vivante libraries: 'eselect vivante set fb'"
+#		eerror "  2. Select Vivante implementation for OpenGL: 'eselect opengl set vivante'"
+#		die
+#	fi
+#}
 
 pkg_setup() {
 	check_extra_config
@@ -164,8 +164,8 @@ src_unpack() {
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-9999-no-arm-flags.patch #400617
-	epatch "${FILESDIR}"/${P}-texturepacker.patch
-	epatch "${FILESDIR}"/${P}-gcc-5.patch #544760
+	epatch "${FILESDIR}"/${PN}-15.1-texturepacker.patch
+	epatch_user #293109
 
 	# some dirs ship generated autotools, some dont
 	multijob_init

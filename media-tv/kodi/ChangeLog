@@ -1,6 +1,11 @@
-# ChangeLog for x11-base/xorg-drivers
-# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# ChangeLog for media-tv/kodi
+# Copyright 1999-2016 Gentoo Foundation; Distributed under the GPL v2
 # $Header: $
+
+*kodi-15.2 (08 Feb 2016)
+
+  08 Feb 2016; Jesús Pérez (Chuso) +kodi-15.2.ebuild, -kodi-15.1.ebuild:
+  media-tv/kodi: Switched to version 15.2.
 
   03 Dec 2015; Chuso Pérez <overlay@chuso.net> kodi-15.1.ebuild,
   Add support to vivante video card.
