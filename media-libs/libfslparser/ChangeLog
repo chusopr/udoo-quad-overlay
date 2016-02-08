@@ -1,3 +1,9 @@
+*libfslparser-4.0.7 (08 Feb 2016)
+
+  08 Feb 2016; Jesús Pérez (Chuso) +libfslparser-4.0.7.ebuild,
+  -libfslparser-4.0.3.ebuild:
+  media-libs/libfslparser: Switched to version 4.0.7.
+
 *libfslparser-4.0.3 (10 Dec 2015)
 
   10 Dec 2015; Chuso Pérez +files/99-libfslparser, +libfslparser-4.0.3.ebuild,

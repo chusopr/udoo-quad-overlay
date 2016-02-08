@@ -8,7 +8,7 @@ inherit eutils
 
 DESCRIPTION="Freescale Multimedia parser libs"
 HOMEPAGE="https://freescale.github.io"
-SRC_URI="http://www.freescale.com/lgfiles/NMG/MAD/YOCTO/${P}.bin"
+SRC_URI="http://www.nxp.com/lgfiles/NMG/MAD/YOCTO/${P}.bin"
 
 LICENSE="Freescale"
 SLOT="0"
