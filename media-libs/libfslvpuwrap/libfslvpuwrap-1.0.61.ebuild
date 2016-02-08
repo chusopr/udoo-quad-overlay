@@ -8,7 +8,7 @@ inherit eutils unpacker
 
 DESCRIPTION="Freescale Multimedia VPU wrapper"
 HOMEPAGE="https://freescale.github.io"
-SRC_URI="http://www.freescale.com/lgfiles/NMG/MAD/YOCTO/${P}.bin"
+SRC_URI="http://www.nxp.com/lgfiles/NMG/MAD/YOCTO/${P}.bin"
 
 LICENSE="Freescale"
 SLOT="0"
@@ -16,12 +16,12 @@ SLOT="0"
 KEYWORDS="~arm"
 
 IUSE="examples"
-DEPEND="|| ( media-libs/imx-lib >=media-libs/imx-vpu-5 )"
+DEPEND="media-libs/imx-vpu"
 RDEPEND="${DEPEND}"
 
 src_unpack()
 {
-	unpack_makeself ${A} 684 tail
+	sh "${DISTDIR}/${P}.bin" --force --auto-accept || die
 }
 
 src_install()

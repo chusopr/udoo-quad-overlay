@@ -1,3 +1,9 @@
+*libfslvpuwrap-1.0.61 (08 Feb 2016)
+
+  08 Feb 2016; Jesús Pérez (Chuso) +libfslvpuwrap-1.0.61.ebuild,
+  -libfslvpuwrap-1.0.58.ebuild:
+  media-libs/libfslvpuwrap: Switched to version 1.0.61.
+
 *libfslvpuwrap-1.0.58 (04 Jan 2016)
 
   04 Jan 2016; Chuso Pérez +libfslvpuwrap-1.0.58.ebuild, +metadata.xml:
